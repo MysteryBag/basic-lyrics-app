@@ -102,16 +102,12 @@
         #playBtn.playing {
             background: #f87171;
         }
-
-        #playBtn.playing::content {
-            content: "Pause";
-        }
     </style>
 </head>
 <body>
     <h1>Don't Stop Me Now - Queen</h1>
     <div class="lyrics-container">
-        <div class="line-counter"><span id="currentLine">1</span> / <span id="totalLines">50</span></div>
+        <div class="line-counter">Line <span id="currentLine">1</span> of <span id="totalLines">50</span></div>
         <div class="lyrics-line" id="lyricsDisplay"></div>
         <div class="controls">
             <button id="prevBtn">Previous</button>
