@@ -142,6 +142,24 @@
             transform: translateY(-1px);
         }
 
+        button:focus {
+            outline: 2px solid #e8b923;
+            outline-offset: 2px;
+        }
+
+        #prevBtn:focus, #nextBtn:focus {
+            outline-color: rgba(255, 255, 255, 0.8);
+        }
+
+        button:focus {
+            outline: 2px solid #e8b923;
+            outline-offset: 2px;
+        }
+
+        button:focus:not(:focus-visible) {
+            outline: none;
+        }
+
         #prevBtn, #nextBtn {
             background: rgba(255, 255, 255, 0.12);
             color: #fff;
@@ -396,6 +414,29 @@
         });
 
         playBtn.addEventListener('click', togglePlay);
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            // Don't trigger if user is in an input
+            if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+
+            switch (e.code) {
+                case 'Space':
+                    e.preventDefault();
+                    togglePlay();
+                    break;
+                case 'ArrowLeft':
+                    e.preventDefault();
+                    stopPlay();
+                    prevLine();
+                    break;
+                case 'ArrowRight':
+                    e.preventDefault();
+                    stopPlay();
+                    nextLine();
+                    break;
+            }
+        });
 
         totalLinesEl.textContent = lyrics.length;
         displayLine();
